@@ -2,28 +2,16 @@ package yaxin
 
 class Vertex {
 		
-		private String name;
+		String name;
 	
-		private ProcessingState state;
+		ProcessingState state;
 	
-		private List<Edge> edges = new ArrayList<Edge>();
+		List<Edge> edges = new ArrayList<Edge>();
 	
 		public Vertex(String name) {
 			super();
 			this.name = name;
-		}
-	
-		public String getName() {
-			return name;
-		}
-	
-		public List<Edge> getEdges() {
-			return edges;
-		}
-	
-		public ProcessingState getState() {
-			return state;
-		}
+		}	
 	
 		public void setState(ProcessingState state) {
 			this.state = state;

@@ -7,12 +7,40 @@ class GraphTest {
 	@Test
 	public void testReverseGraph() {
 		println "testReverseGraph";
-		Graph g = buildGraph();
+		
+		DirectedGraph g = buildG3();
+		println g;
+		
+		g.reverse();
 		println g;
 	}
 	
-	Graph buildGraph() {
-		Graph graph = new Graph();
+	@Test
+	public void testFindRoots() {
+		
+	}
+	
+	@Test
+	public void testFindLeaves() {
+		
+	}
+	
+	DirectedGraph buildG3() {
+		DirectedGraph graph = new DirectedGraph();
+		
+		Vertex a = graph.newVertex("A");
+		Vertex b = graph.newVertex("B");
+		Vertex c = graph.newVertex("C");
+		
+		a.connect(b);
+		b.connect(c);
+		c.connect(a);
+		
+		return graph;
+	}
+	
+	DirectedGraph buildGraph() {
+		DirectedGraph graph = new DirectedGraph();
 		
 		Vertex a = graph.newVertex("A");
 		Vertex b = graph.newVertex("B");
