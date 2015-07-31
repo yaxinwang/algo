@@ -8,10 +8,16 @@ class Vertex {
 	
 		List<Edge> edges = new ArrayList<Edge>();
 	
+		Boolean isRoot;
+		
 		public Vertex(String name) {
 			super();
 			this.name = name;
 		}	
+		
+		public boolean isLeaf() {
+			return edges.size() == 0;
+		}
 	
 		public void setState(ProcessingState state) {
 			this.state = state;

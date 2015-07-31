@@ -17,14 +17,21 @@ class GraphTest {
 	
 	@Test
 	public void testFindRoots() {
+		DirectedGraph g = buildGraph();
+		List<Vertex> roots = g.findRoots();
+		println roots.size();
 		
+		roots.each { r ->
+			println r;
+		}
 	}
 	
 	@Test
-	public void testFindLeaves() {
-		
+	public void testFindCycle() {
+		DirectedGraph g = buildGraph();
+		println "has cycle? ${g.hasCycle()}";
 	}
-	
+		
 	DirectedGraph buildG3() {
 		DirectedGraph graph = new DirectedGraph();
 		

@@ -13,6 +13,27 @@ class DirectedGraph {
 		vertices.add(v);
 		return v;
 	}
+	
+	public List<Vertex> findRoots() {
+		vertices.each { v ->
+			v.isRoot = true;
+		}
+		
+		vertices.each { v ->
+			v.edges.each { e ->
+				e.to.isRoot = false;
+			}
+		}
+		
+		List<Vertex> roots = [];
+		vertices.each { v ->
+			if(v.isRoot) {
+				roots << v;
+			}
+		}
+		
+		return roots;
+	}
 
 	public void reverse() {
 		List<Edge> reversedEdges = [];
@@ -33,6 +54,44 @@ class DirectedGraph {
 		reversedEdges.each { e -> 
 			e.from.edges.add(e);
 		}
+	}
+	
+	public boolean hasCycle() {
+		List<Vertex> roots = findRoots();
+		if(roots.size() == 0) {
+			return true;
+		}
+		
+		for(Vertex root : roots) {
+			if(hasCycle(root)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public boolean hasCycle(Vertex v) {
+		v.state = ProcessingState.DISCOVERED;
+		
+		for(Edge e : v.edges) {
+			if(e.to.state == ProcessingState.PROCESSED) {
+				//processed from other root
+				continue;
+			} else if(e.to.state == ProcessingState.DISCOVERED) {
+				//back to discovered vertex, it is a cycle
+				println "back to ${e.to.name}";
+				return true;
+			} else {
+				if(hasCycle(e.to)) {
+					return true;
+				}
+			}
+		}
+		
+		v.state = ProcessingState.PROCESSED;
+		
+		return false;
 	}
 
 	public String toString() {
