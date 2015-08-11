@@ -8,7 +8,7 @@ class GraphTest {
 	public void testReverseGraph() {
 		println "testReverseGraph";
 		
-		DirectedGraph g = buildG3();
+		DirectedGraph g = buildG3Cycle();
 		println g;
 		
 		g.reverse();
@@ -31,8 +31,20 @@ class GraphTest {
 		DirectedGraph g = buildGraph();
 		println "has cycle? ${g.hasCycle()}";
 	}
+	
+	@Test
+	public void testTopSort() {
+		println 'testTopSort';
+		DirectedGraph g = buildGraph();
+		Node head = TopSort.topSort(g);
+		println head;
 		
-	DirectedGraph buildG3() {
+		for(Node n = head; n != null; n = n.next) {
+			print "${n.name} ";
+		}
+	}
+		
+	DirectedGraph buildG3Cycle() {
 		DirectedGraph graph = new DirectedGraph();
 		
 		Vertex a = graph.newVertex("A");
@@ -66,8 +78,8 @@ class GraphTest {
 		d.connect(e,g);
 		e.connect(c, f, g);
 		f.connect(h);
-		g.connect(f, i);
-		//g.connect(i);
+		//g.connect(f, i);
+		g.connect(i);
 		h.connect(g, j);
 		i.connect(j);
 		
