@@ -1,4 +1,6 @@
-package yaxin
+package yaxin.directed_graph
+
+import yaxin.ProcessingState
 
 class Vertex {
 		

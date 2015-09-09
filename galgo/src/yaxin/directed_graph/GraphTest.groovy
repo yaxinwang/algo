@@ -1,4 +1,4 @@
-package yaxin
+package yaxin.directed_graph
 
 import org.junit.Test
 
