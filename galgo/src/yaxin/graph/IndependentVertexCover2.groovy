@@ -7,6 +7,7 @@ import yaxin.ProcessingState;
 
 class IndependentVertexCover2 {
 
+	//TODO: use the built-in call stack
 	static List<Vertex> stateStack = [];
 	
 	static List<Vertex> findCover(Graph g) {
