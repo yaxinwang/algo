@@ -46,6 +46,10 @@ class Edge {
 		}
 	}
 	
+	Vertex getOtherVertex(Vertex thisVertex) {		
+		return left != thisVertex ? left : right;
+	}
+	
 	String toString() {
 		return "(${left.name}, ${right.name})";
 	}

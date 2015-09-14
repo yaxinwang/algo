@@ -30,7 +30,7 @@ class Vertex {
 			}
 			ls << e;
 		}
-		
+
 		def dupEdges = [];
 		edgeMap.values().each { ls ->
 			if(ls.size() > 1) {
@@ -38,6 +38,21 @@ class Vertex {
 			}
 		}
 		return dupEdges;
+	}
+
+	void delete() {
+		Graph.g.vertices.remove(this);
+
+		edges.each { e ->
+			Graph.g.edges.remove(e);
+
+			Vertex otherVertex = e.getOtherVertex(this);
+			otherVertex.neighbors.remove(this);
+			otherVertex.edges.remove(e);
+		};
+
+		this.neighbors.clear();
+		this.edges.clear();
 	}
 
 	String toString() {
