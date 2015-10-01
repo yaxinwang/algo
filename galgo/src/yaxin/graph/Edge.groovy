@@ -5,6 +5,9 @@ class Edge {
 	Vertex left;
 	Vertex right;
 	
+	Vertex originalLeft;
+	Vertex originalRight;
+	
 	Edge(Vertex left, Vertex right) {
 		this.left = left;
 		this.right = right;

@@ -10,7 +10,7 @@ class Vertex {
 	List<Edge> edges = [];
 
 	ProcessingState state;
-
+	
 	Vertex(String name) {
 		this.name = name;
 		Graph.g.vertices << this;
@@ -38,6 +38,10 @@ class Vertex {
 			}
 		}
 		return dupEdges;
+	}
+	
+	boolean isCompressedCycle() {
+		return name.indexOf('[') > -1 && name.indexOf(']') > 0;
 	}
 
 	void delete() {
