@@ -9,6 +9,7 @@ public class Edge {
 		this.left = left;
 		this.right = right;
 		left.edges.add(this);
+		right.edges.add(this);
 		//right.edges.add(this);
 		Graph.g.edges.add(this);
 	}
